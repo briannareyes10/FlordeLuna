@@ -17,3 +17,5 @@ RUN chown -R www-data:www-data /var/www/html && sed -i 's/\r$//' /var/www/html/s
 
 # Railway define la variable PORT; start.sh pone a Apache a escuchar en ese puerto
 CMD ["/var/www/html/start.sh"]
+
+# Railway evitar errores
