@@ -15,3 +15,5 @@ a2enmod mpm_prefork >/dev/null 2>&1 || true
 echo "[start] MPM activos: $(ls /etc/apache2/mods-enabled | grep -i mpm | tr '\n' ' ')"
 grep -rn "LoadModule mpm" /etc/apache2/apache2.conf /etc/apache2/conf-enabled /etc/apache2/sites-enabled 2>/dev/null || true
 exec apache2-foreground
+
+# Para que funcione en el Railway
