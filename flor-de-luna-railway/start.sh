@@ -9,4 +9,6 @@ sed -ri "s/<VirtualHost \*:80>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-avai
 # Si la base no responde, el sitio igual enciende (y Conection/salud.php mostrará el problema).
 php /var/www/html/Conection/migrar.php || echo "[start] La migración falló; revisa las variables de MySQL en Railway."
 
+# Evita "More than one MPM loaded" (solo prefork)
+rm -f /etc/apache2/mods-enabled/mpm_event.* /etc/apache2/mods-enabled/mpm_worker.*
 exec apache2-foreground

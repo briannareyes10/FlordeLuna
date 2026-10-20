@@ -6,7 +6,9 @@ RUN docker-php-ext-install pdo_mysql
 
 # Permite que el .htaccess proteja las carpetas internas
 RUN sed -ri 's!AllowOverride None!AllowOverride All!g' /etc/apache2/apache2.conf \
-    && a2enmod headers
+    && a2enmod headers \
+    && rm -f /etc/apache2/mods-enabled/mpm_event.* /etc/apache2/mods-enabled/mpm_worker.* \
+    && a2enmod mpm_prefork
 
 WORKDIR /var/www/html
 COPY . /var/www/html
